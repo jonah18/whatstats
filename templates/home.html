@@ -2,6 +2,14 @@
 {% block content %}
 
     <form class="main-container" action="{{ url_for('main.main_route') }}" method="post" enctype="multipart/form-data">
+        {% if message == "No File" %}
+
+            <div class="error">
+                Please choose a valid file
+            </div>
+
+        {% endif %}
+
         <ul>
             <li>
                 <input class="field-style align-left" type="file" id="chatFile" name="file" accept=".txt">

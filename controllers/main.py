@@ -2,21 +2,16 @@ from flask import *
 
 main = Blueprint('main', __name__, template_folder='templates')
 
-fullChat = {}
 
-chats = []
-stats = {}
+def updatePostStats(author, stats):
 
-
-def updatePostStats(author):
     if author in stats:
         stats[author] += 1
     else:
         stats[author] = 1
 
-
 # Update group messaging statistics
-def updateWordCountStats(author, message):
+def updateWordCountStats(author, message, stats):
 
     if author not in stats:
         stats[author] = 0
@@ -29,7 +24,7 @@ def updateWordCountStats(author, message):
         stats[author] += 1
 
 
-def parseMessage(line, chat, metric):
+def parseMessage(line, chat, metric, stats):
     split = line.split(":")
 
     if len(split) < 5:
@@ -42,10 +37,10 @@ def parseMessage(line, chat, metric):
     message = split[4][1:]
 
     if metric == "posts":
-        updatePostStats(author)
+        updatePostStats(author, stats)
 
     else:
-        updateWordCountStats(author, message)
+        updateWordCountStats(author, message, stats)
 
     chat["author"] = author
     chat["message"] = message
@@ -64,17 +59,27 @@ def main_route():
 
     elif request.method == 'POST':
 
+        chats = []
+        stats = {}
+
+
         metric = request.form['metric']
         file = request.files['file']
+
+        if request.files['file'].filename == '':
+            options['message'] = "No File"
+
+            return render_template("home.html", **options)
 
         numChats = 0
         for line in file.readlines():
             chat = {}
             line = str(line)
 
-            if parseMessage(line, chat, metric):
+            if parseMessage(line, chat, metric, stats):
                 chats.append(chat)
             numChats += 1
+        options['message'] = "Success"
         options['stats'] = stats
 
     return render_template("stats.html", **options)

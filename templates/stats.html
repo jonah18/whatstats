@@ -2,6 +2,11 @@
 {% block content %}
 
     <div class="main-container">
+    
+        {% if message == "No File" %}
+            Please choose valid file
+        {% endif %}
+
         {% for user in stats %}
             {{ user }}: {{ stats[user] }}<br>
         {% endfor %}
