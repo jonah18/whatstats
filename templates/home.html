@@ -11,10 +11,12 @@
         {% endif %}
 
         <ul>
-            <li>
+            <li class="input-field">
+                <label for="chatFile">Upload a chat file</label>
                 <input class="field-style field-full align-left" type="file" id="chatFile" name="file" accept=".txt">
             </li>
-            <li>
+            <li class="input-field">
+                <label for="metric-input">Choose a metric</label>
                 <select class="form-control field-style" name="metric" id="metric-input">
                     <option value="posts">Posts</option>
                     <option value="words">Words</option>
