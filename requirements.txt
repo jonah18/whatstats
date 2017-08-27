@@ -1,4 +1,4 @@
 Flask==0.12.2
 Jinja2==2.9.6
 gunicorn==19.7.1
-Sass==3.5.1
+sass==3.5.1
