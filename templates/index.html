@@ -8,31 +8,28 @@
 
     <link rel="stylesheet" href="../static/css/styles.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <h1 id="title">WhatStats</h1>
 </head>
 <body class="body-container">
+    <h1 id="title">WhatStats</h1>
+
 
     <div class="form-container">
-
-        <form action="{{ url_for('main.main_route') }}" method="post" enctype="multipart/form-data">
-
-            <div class="input-group">
-                <span class="input-group-addon">Chat File</span>
-                <input class="form-control" type="file" id="chatFile" name="file" accept=".txt"><br>
-            </div>
-
-            <div class="input-group">
-                <span class="input-group-addon">Metric</span>
-                <select class="form-control" name="metric">
-                    <option value="posts">Posts</option>
-                    <option value="words">Words</option>
-                </select><br>
-            </div>
-
-            <button type="button" class="btn btn-default" id="getStats">Go!</button>
-
+        <form class="form-style-9" action="{{ url_for('main.main_route') }}" method="post" enctype="multipart/form-data">
+            <ul>
+                <li>
+                    <input class="field-style align-left" type="file" id="chatFile" name="file" accept=".txt">
+                </li>
+                <li>
+                    <select class="form-control field-style" name="metric" id="metric-input">
+                        <option value="posts">Posts</option>
+                        <option value="words">Words</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="submit" value="Get Stats" />
+                </li>
+            </ul>
         </form>
-
     </div>
 
     {% block content %}{% endblock %}
