@@ -12,26 +12,6 @@
 <body class="body-container">
     <h1 id="title">WhatStats</h1>
 
-
-    <div class="form-container">
-        <form class="form-style-9" action="{{ url_for('main.main_route') }}" method="post" enctype="multipart/form-data">
-            <ul>
-                <li>
-                    <input class="field-style align-left" type="file" id="chatFile" name="file" accept=".txt">
-                </li>
-                <li>
-                    <select class="form-control field-style" name="metric" id="metric-input">
-                        <option value="posts">Posts</option>
-                        <option value="words">Words</option>
-                    </select>
-                </li>
-                <li>
-                    <input type="submit" value="Get Stats" />
-                </li>
-            </ul>
-        </form>
-    </div>
-
     {% block content %}{% endblock %}
 
 </body>

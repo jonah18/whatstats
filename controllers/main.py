@@ -59,7 +59,10 @@ def parseMessage(line, chat, metric):
 def main_route():
     options = {}
 
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return render_template("home.html")
+
+    elif request.method == 'POST':
 
         metric = request.form['metric']
         file = request.files['file']

@@ -1,10 +1,14 @@
 {% extends "index.html" %}
 {% block content %}
 
-    <div id="stats">
+    <div class="main-container">
         {% for user in stats %}
             {{ user }}: {{ stats[user] }}<br>
         {% endfor %}
+
+        <form action="{{ url_for('main.main_route') }}" method="get">
+            <input id="results-button" type="submit" value="New Chat"/>
+        </form>
     </div>
 
 
