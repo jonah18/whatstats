@@ -1,0 +1,13 @@
+#title {
+    color: white;
+}
+
+.body-container {
+    background-color: #25d366;
+    text-align: center;
+}
+
+.form-container {
+    width: 50%;
+    margin: 50px auto auto;
+}

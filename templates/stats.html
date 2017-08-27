@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block content %}
+
+    <div id="stats">
+        {% for user in stats %}
+            {{ user }}: {{ stats[user] }}<br>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
