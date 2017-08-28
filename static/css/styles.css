@@ -50,8 +50,11 @@ form {
     min-height: 35px;
 }
 
-.main-container ul label {
-    float: left;
+.input-label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
 }
 
 .main-container ul li  .field-style {
@@ -97,7 +100,7 @@ form {
 
 .main-container ul li input[type="button"],
 .main-container ul li input[type="submit"],
-#results-button {
+#new-chat-button {
     -moz-box-shadow: inset 0px 1px 0px 0px #128c7e;
     -webkit-box-shadow: inset 0px 1px 0px 0px #128c7e;
     box-shadow: inset 0px 1px 0px 0px #128c7e;
@@ -108,12 +111,15 @@ form {
     color: #FFFFFF;
     padding: 8px 18px;
     text-decoration: none;
-    font: 12px Arial, Helvetica, sans-serif;
 }
 
 .main-container ul li input[type="button"]:hover,
 .main-container ul li input[type="submit"]:hover,
-#results-button {
+#new-chat-button {
     background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
     background-color: #28739E;
+}
+
+#new-chat-button {
+    margin-top: 10px;
 }

@@ -1,5 +1,6 @@
 .custom-list {
   margin-left: 0;
+  margin-top: 20px;
   list-style: none;
   counter-reset: counter;
   overflow: hidden;

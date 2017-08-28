@@ -12,14 +12,34 @@
 
         <ul>
             <li class="input-field">
-                <label for="chatFile">Upload a chat file</label>
-                <input class="field-style field-full align-left" type="file" id="chatFile" name="file" accept=".txt">
+                <label class="input-label" for="chat-file">Upload a chat file</label>
+                <input class="field-style field-full align-left" type="file" id="chat-file" name="file" accept=".txt">
             </li>
             <li class="input-field">
-                <label for="metric-input">Choose a metric</label>
+                <label class="input-label" for="metric-input">Choose a metric</label>
                 <select class="form-control field-style" name="metric" id="metric-input">
                     <option value="posts">Posts</option>
                     <option value="words">Words</option>
+                    <option value="media">Media</option>
+                </select>
+            </li>
+
+            <div class="input-label">Choose a time frame</div>
+            <li>
+                <select class="field-style field-full" id="time-unit"
+                        name="time-unit">
+                    <option value="week">Weeks</option>
+                    <option value="month">Months</option>
+                    <option value="year">Years</option>
+                    <option value="all" selected="selected">All Time</option>
+                </select>
+            </li>
+            <li>
+                <select class="field-style field-full align-left" id="time-number"
+                        style="display: none;" name="time-number">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                 </select>
             </li>
             <li>
@@ -27,5 +47,44 @@
             </li>
         </ul>
     </form>
+
+    <script>
+        $(document).ready(function () {
+            $('#time-unit').change(function() {
+                var val = $(this).val();
+
+                if (val == "all") {
+                    $("#time-number").css("display", "none");
+                }
+
+                else {
+                    $("#time-number").css("display", "block");
+                    $("#time-number").html("");
+
+                    if (val == "year") {
+                        for (var i = 1; i < 6; i++) {
+                            var num = i.toString();
+                            $("#time-number").append("<option value='"+ num + "'>" + num + "</option>")
+                        }
+                    }
+
+                    else if (val == "month") {
+                        for (var i = 1; i < 12; i++) {
+                            var num = i.toString();
+                            $("#time-number").append("<option value='"+ num + "'>" + num + "</option>")
+                        }
+                    }
+
+                    else {
+                        for (var i = 1; i < 5; i++) {
+                            var num = i.toString();
+                            $("#time-number").append("<option value='"+ num + "'>" + num + "</option>")
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
 
 {% endblock %}

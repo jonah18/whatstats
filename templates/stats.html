@@ -2,17 +2,13 @@
 {% block content %}
 
     <div class="main-container">
-    
-        {% if message == "No File" %}
-            Please choose valid file
-        {% endif %}
 
         {% for user in stats %}
-            {{ user }}: {{ stats[user] }}<br>
+           {{ loop.index }}. {{ user }}: {{ stats[user] }}<br>
         {% endfor %}
 
         <form action="{{ url_for('main.main_route') }}" method="get">
-            <input id="results-button" type="submit" value="New Chat"/>
+            <input id="new-chat-button" type="submit" value="New Chat"/>
         </form>
     </div>
 
